@@ -25,7 +25,7 @@ no limit to customization. Below are several code resources for key SCSS files.
 
 ## Project Styling
 
-See [Project Settings - Branding & Style](/user-guide/settings/project-settings#branding-style).
+See [Project Settings - Branding & Style](https://github.com/directus/directus/blob/main/docs/user-guide/settings/project-settings.md#branding--style).
 
 ## Custom CSS
 
