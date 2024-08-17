@@ -1079,6 +1079,7 @@ wysiwyg_options:
   table: Table
   visualaid: View invisible elements
   source_code: Edit Source Code
+  inline_code: Inline Code
   fullscreen: Full Screen
   directionality: Directionality
   lazy_loading: Lazy Load Image
