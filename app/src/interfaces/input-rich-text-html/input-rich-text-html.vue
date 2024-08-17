@@ -10,6 +10,7 @@ import useImage from './useImage';
 import useLink from './useLink';
 import useMedia from './useMedia';
 import useSourceCode from './useSourceCode';
+import useInlineCode from './useInlineCode';
 
 import 'tinymce/tinymce';
 
@@ -68,6 +69,7 @@ const props = withDefaults(
 			'customMedia',
 			'code',
 			'fullscreen',
+			'inlineCode',
 		],
 		font: 'sans-serif',
 		customFormats: () => [],
@@ -118,6 +120,8 @@ const {
 const { linkButton, linkDrawerOpen, closeLinkDrawer, saveLink, linkSelection, linkNode } = useLink(editorRef);
 
 const { codeDrawerOpen, code, closeCodeDrawer, saveCode, sourceCodeButton } = useSourceCode(editorRef);
+
+const { inlineCodeButton } = useInlineCode(editorRef);
 
 const internalValue = computed({
 	get() {
@@ -189,6 +193,7 @@ const editorOptions = computed(() => {
 			'preview',
 			'fullscreen',
 			'directionality',
+			'inlineCode',
 		],
 		license_key: 'gpl',
 		branding: false,
@@ -253,9 +258,24 @@ function setup(editor: any) {
 
 	const linkShortcut = 'meta+k';
 
+	editor.ui.registry.addToggleButton('inlineCode', inlineCodeButton);
 	editor.ui.registry.addToggleButton('customImage', imageButton);
 	editor.ui.registry.addToggleButton('customMedia', mediaButton);
 	editor.ui.registry.addToggleButton('customLink', { ...linkButton, shortcut: linkShortcut });
+
+	// Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.
+	editor.ui.registry.addIcon(
+		'inline-code',
+		'<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"> <path d="m384-336 56-57-87-87 87-87-56-57-144 144 144 144Zm192 0 144-144-144-144-56 57 87 87-87 87 56 57ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /> </svg>',
+	);
+
+	editor.ui.registry.addIcon(
+		'inline-code2',
+		`<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+			<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14"/>
+		</svg>`,
+	);
+
 	editor.ui.registry.addButton('customCode', sourceCodeButton);
 
 	editor.on('init', function () {

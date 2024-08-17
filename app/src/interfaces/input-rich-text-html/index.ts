@@ -197,6 +197,10 @@ export default defineInterface({
 								text: '$t:wysiwyg_options.media',
 							},
 							{
+								value: 'inlineCode',
+								text: 'Inline Code',
+							},
+							{
 								value: 'table',
 								text: '$t:wysiwyg_options.table',
 							},
